@@ -14,9 +14,34 @@
  */
 class GestionMaree
 {
+	private:
+
+		/**
+		 * le niveau de la mer calculé par les capteurs du système
+		 */
+		double niveau;
+
 	public:
+
+		/**
+		 * Constructeur par défaut
+		 */
 		GestionMaree();
+
+		/**
+		 * Destructeur de l'objet
+		 */
 		virtual ~GestionMaree();
+
+		/**
+		 * permet d'utiliser les capteurs pour vérifier le niveau de la mer
+		 */
+		void verifierNiveau();
+
+		/**
+		 * accesseur au niveau de la mer
+		 */
+		double lireNiveauMaree();
 };
 
 #endif /* GESTIONMAREE_HPP_ */
