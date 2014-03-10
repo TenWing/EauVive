@@ -2,10 +2,10 @@
  * Vanne.cpp
  *
  *  Created on: 10 mars 2014
- *      Author: Tahiry
+ *      Author: Tendry
  */
 
-#include "C:Vanne.hpp"
+#include "Vanne.hpp"
 
 Vanne::Vanne()
 {

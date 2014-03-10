@@ -2,10 +2,10 @@
  * Seance.cpp
  *
  *  Created on: 10 mars 2014
- *      Author: Tahiry
+ *      Author: Tendry
  */
 
-#include "C:Seance.hpp"
+#include "Seance.hpp"
 
 Seance::Seance()
 {

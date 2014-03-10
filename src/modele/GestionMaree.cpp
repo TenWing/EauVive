@@ -2,10 +2,10 @@
  * GestionMaree.cpp
  *
  *  Created on: 10 mars 2014
- *      Author: Tahiry
+ *      Author: Tendry
  */
 
-#include "C:GestionMaree.hpp"
+#include "GestionMaree.hpp"
 
 GestionMaree::GestionMaree()
 {

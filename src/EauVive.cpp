@@ -2,10 +2,10 @@
  * EauVive.cpp
  *
  *  Created on: 10 mars 2014
- *      Author: Tahiry
+ *      Author: Tendry
  */
 
-#include <src/EauVive.hpp>
+#include "EauVive.hpp"
 
 EauVive::EauVive()
 {

@@ -2,10 +2,10 @@
  * GestionStade.cpp
  *
  *  Created on: 10 mars 2014
- *      Author: Tahiry
+ *      Author: Tendry
  */
 
-#include "C:GestionStade.hpp"
+#include "GestionStade.hpp"
 
 GestionStade::GestionStade()
 {
