@@ -6,6 +6,7 @@
  */
 
 #include "EauVive.hpp"
+#include <iostream>
 
 EauVive::EauVive()
 {
@@ -17,4 +18,12 @@ EauVive::~EauVive()
 {
 	// TODO Auto-generated destructor stub
 }
+
+int main(int argc, char **argv)
+{
+    std::cout << "Hello World!" << std::endl;
+
+    return 0;
+}
+
 
