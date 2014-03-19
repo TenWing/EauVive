@@ -8,6 +8,8 @@
 #ifndef GESTIONMAREE_HPP_
 #define GESTIONMAREE_HPP_
 
+#include "GestionStade.hpp"
+
 /**
  * Représente la marée et les informations extraites de celle-ci à l'aide
  * des capteurs
@@ -20,6 +22,11 @@ class GestionMaree
 		 * le niveau de la mer calculé par les capteurs du système
 		 */
 		double niveau;
+
+		/**
+		* le stade eau vive
+		*/
+		GestionStade stade;
 
 	public:
 
