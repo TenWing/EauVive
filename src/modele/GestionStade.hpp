@@ -58,7 +58,7 @@ class GestionStade
 		void commencerSeance();
 
 		/**
-		*	Interrompt la seance jouée
+		* Interrompt la seance jouée
 		*/
 		void interompreSeance();
 
@@ -71,7 +71,12 @@ class GestionStade
 		* vérifie si la séance est terminée 
 		* et renvoie un booléen répondant a la question
 		*/
-		boolean verifierFinSeance();
+		bool verifierFinSeance();
+
+		/**
+		* calcule la lame d'eau //la lame d'eau est la différence entre le niveau de la résèrve et la hauteur qu'atteint la vanne
+		*/
+		double calculerLameEau();
 };
 
 #endif /* GESTIONSTADE_HPP_ */

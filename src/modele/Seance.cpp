@@ -19,8 +19,12 @@ Seance::Seance(TypeProgramme niveau) : programme(niveau)
 
 }
 
-Seance::~Seance()
+double Seance::getDebit()
 {
-
+	switch(programme)
+	{
+		default:
+			return 1;
+	}
 }
 

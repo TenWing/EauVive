@@ -2,13 +2,13 @@
  * GestionMaree.hpp
  *
  *  Created on: 10 mars 2014
- *      Author: Tahiry
+ *      Author: Tendry
  */
 
 #ifndef GESTIONMAREE_HPP_
 #define GESTIONMAREE_HPP_
 
-#include "GestionStade.hpp"
+class GestionStade;
 
 /**
  * Représente la marée et les informations extraites de celle-ci à l'aide
@@ -26,7 +26,7 @@ class GestionMaree
 		/**
 		* le stade eau vive
 		*/
-		GestionStade stade;
+		GestionStade* stade;
 
 		/**
 		* l'heure lue

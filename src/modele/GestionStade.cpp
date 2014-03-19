@@ -6,7 +6,6 @@
  */
 
 #include "GestionStade.hpp"
-#include "GestionMaree.hpp"
 
 GestionStade::GestionStade()
 {
@@ -14,12 +13,7 @@ GestionStade::GestionStade()
 
 }
 
-GestionStade::~GestionStade()
-{
-	// TODO Auto-generated destructor stub
-}
-
-boolean GestionStade::verifierFinSeance()
+bool GestionStade::verifierFinSeance()
 {
 	double niveauMaree = maree.lireNiveauMaree();
 
@@ -28,5 +22,10 @@ boolean GestionStade::verifierFinSeance()
 		return true;
 
 	return false;
+}
+
+double GestionStade::calculerLameEau()
+{
+	return 0;
 }
 

@@ -2,7 +2,7 @@
  * GestionMaree.cpp
  *
  *  Created on: 10 mars 2014
- *      Author: Tahiry
+ *      Author: Tendry
  */
 #include <cmath>
 #include "GestionMaree.hpp"
@@ -11,6 +11,11 @@ GestionMaree::GestionMaree()
 {
     coefficient = 60;
     heure = 11;
+}
+
+GestionMaree::~GestionMaree()
+{
+	
 }
 
 double GestionMaree::lireNiveauMaree()

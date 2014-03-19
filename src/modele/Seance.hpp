@@ -36,9 +36,9 @@ class Seance
 		Seance(TypeProgramme niveau);
 
 		/**
-		 * Destructeur de l'objet
-		 */
-		virtual ~Seance();
+		* calcule le débit d'eau de la rivière en fonction du programme
+		*/
+		double getDebit();
 };
 
 #endif /* SEANCE_HPP_ */
