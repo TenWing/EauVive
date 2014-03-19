@@ -10,13 +10,16 @@
 
 EauVive::EauVive()
 {
-	// TODO Auto-generated constructor stub
+    // TODO Auto-generated constructor stub
 
 }
 
 EauVive::~EauVive()
 {
-	// TODO Auto-generated destructor stub
+    // TODO Auto-generated destructor stub
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5a2f1d4abe4a3470bed39bde6bc1d066545b724e
