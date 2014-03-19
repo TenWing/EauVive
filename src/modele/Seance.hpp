@@ -16,7 +16,7 @@
  */
 class Seance
 {
-		private :
+	private:
 
 		/**
 		 * le niveau (de difficulté) associé à la séance

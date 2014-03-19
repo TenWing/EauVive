@@ -13,7 +13,7 @@
 #include "GestionMaree.hpp"
 
 /**
- * Représente l'objet stade, cntenant toutes les structures pouvant
+ * Représente l'objet stade, contenant toutes les structures pouvant
  * mettre en place la rivière artificielle
  */
 class GestionStade

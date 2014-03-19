@@ -21,7 +21,28 @@ bool GestionStade::verifierFinSeance()
 	if(niveauMaree > 1)
 		return true;
 
+	//Si le niveau de la résèrve est épuisé alors on arrête la séance
+	if(reserve <= 0)
+		return true;
+
 	return false;
+}
+
+void GestionStade::effectuerSeance()
+{
+	double lame = calculerLameEau();
+	
+}
+
+void GestionStade::commencerSeance()
+{
+	double debit = seance.getDebit();
+
+	//tant que la séance n'est pas terminée
+	while(!verifierFinSeance())
+	{
+		effectuerSeance();
+	}
 }
 
 double GestionStade::calculerLameEau()
