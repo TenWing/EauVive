@@ -2,7 +2,7 @@
  * GestionMaree.hpp
  *
  *  Created on: 10 mars 2014
- *      Author: Tendry
+ *      Author: Tahiry
  */
 
 #ifndef GESTIONMAREE_HPP_
@@ -20,18 +20,17 @@ class GestionMaree
          * le niveau de la mer calculé par les capteurs du système
          */
         double niveau;
+        
+        int heure;
 
     public:
+    
+        int coefficient;
 
         /**
          * Constructeur par défaut
          */
         GestionMaree();
-
-        /**
-         * Destructeur de l'objet
-         */
-        virtual ~GestionMaree();
 
         /**
          * permet d'utiliser les capteurs pour vérifier le niveau de la mer

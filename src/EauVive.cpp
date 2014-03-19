@@ -10,20 +10,12 @@
 
 EauVive::EauVive()
 {
-	// TODO Auto-generated constructor stub
+    // TODO Auto-generated constructor stub
 
 }
 
 EauVive::~EauVive()
 {
-	// TODO Auto-generated destructor stub
+    // TODO Auto-generated destructor stub
 }
-
-int main(int argc, char **argv)
-{
-    std::cout << "Hello World!" << std::endl;
-
-    return 0;
-}
-
 

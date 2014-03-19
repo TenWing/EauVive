@@ -2,19 +2,21 @@
  * GestionMaree.cpp
  *
  *  Created on: 10 mars 2014
- *      Author: Tendry
+ *      Author: Tahiry
  */
-
+#include <cmath>
 #include "GestionMaree.hpp"
 
 GestionMaree::GestionMaree()
 {
-	// TODO Auto-generated constructor stub
-
+    coefficient = 60;
+    heure = 11;
 }
 
-GestionMaree::~GestionMaree()
+double GestionMaree::lireNiveauMaree()
 {
-	// TODO Auto-generated destructor stub
+    heure = (heure + 1) % 12;
+    
+    return (std::abs(6-heure) / 6 - 0.5) * (coefficient / 10.0) + 5.0;
 }
 
