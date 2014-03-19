@@ -6,15 +6,21 @@
  */
 
 #include "Seance.hpp"
+#include "TypeProgramme.hpp"
 
-Seance::Seance()
+//Initialise le programme a entrainement
+Seance::Seance() : programme(TypeProgramme::ENTRAINEMENT)
 {
-	// TODO Auto-generated constructor stub
+
+}
+
+Seance::Seance(TypeProgramme niveau) : programme(niveau)
+{
 
 }
 
 Seance::~Seance()
 {
-	// TODO Auto-generated destructor stub
+
 }
 

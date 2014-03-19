@@ -52,7 +52,7 @@ if(WIN32)
     set(CMAKE_INSTALL_PREFIX "")
 endif()
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra")
+set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -Wall -std=c++0x -Wextra")
 
 ########################################################################
 #
