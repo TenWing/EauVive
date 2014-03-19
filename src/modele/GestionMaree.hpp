@@ -16,8 +16,6 @@
  */
 class GestionMaree
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
 	private:
 
 		/**
@@ -30,7 +28,17 @@ class GestionMaree
 		*/
 		GestionStade stade;
 
+		/**
+		* l'heure lue
+		*/
+		int heure;
+
 	public:
+
+		/**
+		* le coefficient de maréé
+		*/
+		int coefficient;
 
 		/**
 		 * Constructeur par défaut
@@ -43,48 +51,9 @@ class GestionMaree
 		virtual ~GestionMaree();
 
 		/**
-		 * permet d'utiliser les capteurs pour vérifier le niveau de la mer
-		 */
-		void verifierNiveau();
-
-		/**
-		 * accesseur au niveau de la mer
+		 * accesseur au niveau de la mer, calcule son niveau à l'aide des capteurs et du coefficient
 		 */
 		double lireNiveauMaree();
-=======
-=======
->>>>>>> 5a2f1d4abe4a3470bed39bde6bc1d066545b724e
-    private:
-
-        /**
-         * le niveau de la mer calculé par les capteurs du système
-         */
-        double niveau;
-        
-        int heure;
-
-    public:
-    
-        int coefficient;
-
-        /**
-         * Constructeur par défaut
-         */
-        GestionMaree();
-
-        /**
-         * permet d'utiliser les capteurs pour vérifier le niveau de la mer
-         */
-        void verifierNiveau();
-
-        /**
-         * accesseur au niveau de la mer
-         */
-        double lireNiveauMaree();
-<<<<<<< HEAD
->>>>>>> 5a2f1d4abe4a3470bed39bde6bc1d066545b724e
-=======
->>>>>>> 5a2f1d4abe4a3470bed39bde6bc1d066545b724e
 };
 
 #endif /* GESTIONMAREE_HPP_ */
