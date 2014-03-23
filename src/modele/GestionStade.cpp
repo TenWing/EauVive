@@ -17,8 +17,8 @@ bool GestionStade::verifierFinSeance()
 {
 	double niveauMaree = maree.lireNiveauMaree();
 
-	//si le niveau de la mer est au dessus de 1 m alors on arrête la séance
-	if(niveauMaree > 1)
+	//si le niveau de la mer est au dessus d'une valeur limite alors on arrête la séance
+	if(niveauMaree > 5)
 		return true;
 
 	//Si le niveau de la résèrve est épuisé alors on arrête la séance
