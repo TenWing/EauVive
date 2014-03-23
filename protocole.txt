@@ -1,0 +1,9 @@
+La seance nous donne le debit
+A chaque tic de boucle 
+on a un niveau de reserve et une hauteur de vanne
+on doit calculer la lame d'eau de sorte que le debit reste constant
+on connait donc le debit, on en deduit la lame d'eau
+la lame d'eau est la difference constante qui doit être maintenue entre le niveau de la reserve et la hauteur de la vanne
+quand la reserve descend de tant, la hauteur doit descendre aussi de tant
+ça s'arrête quand il n'y a plus d'eau dans la reserve
+MTN GO CODER

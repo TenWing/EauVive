@@ -7,14 +7,18 @@
 
 #include "Vanne.hpp"
 
-Vanne::Vanne()
+Vanne::Vanne() : hauteur(0)
 {
-	// TODO Auto-generated constructor stub
 
 }
 
 Vanne::~Vanne()
 {
 	// TODO Auto-generated destructor stub
+}
+
+double Vanne::getHauteur()
+{
+	return hauteur;
 }
 

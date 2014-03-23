@@ -45,6 +45,11 @@ class GestionStade
 		*/
 		double reserve;
 
+		/**
+		* calcule la variable m nécessaire au calcul de la lame d'eau
+		*/
+		double calculeM(double hauteur, double largeur);
+
 	public:
 
 		/**

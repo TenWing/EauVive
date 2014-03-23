@@ -29,6 +29,16 @@ class Vanne
 	public:
 		Vanne();
 		virtual ~Vanne();
+
+		/**
+		* Accesseur à la hauteur atteinte par la vanne
+		*/
+		public double gethauteur();
+
+		/**
+		* Demande à la vanne de s'ouvrir jusqu'à ce que la lame d'eau soit atteinte
+		*/
+		public void ouvrir(double lameEau);
 };
 
 #endif /* VANNE_HPP_ */

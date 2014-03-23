@@ -30,14 +30,16 @@ bool GestionStade::verifierFinSeance()
 
 void GestionStade::effectuerSeance()
 {
+	//On récupère le débit necessaire pour calculer la lame d'eau
+	double debit = seance.getDebit();
+
 	double lame = calculerLameEau();
-	
+
+	omniflots.ouvrir(lame);	
 }
 
 void GestionStade::commencerSeance()
 {
-	double debit = seance.getDebit();
-
 	//tant que la séance n'est pas terminée
 	while(!verifierFinSeance())
 	{
@@ -45,8 +47,14 @@ void GestionStade::commencerSeance()
 	}
 }
 
+//Formule : H² = Q / ( g . sqrt(2) . L . g . m)
 double GestionStade::calculerLameEau()
 {
-	return 0;
+	return reserve - omniflots.getHauteur();
+}
+
+double calculeM(double Hauteur, double Largeur)
+{
+	return 0.525f * (1 + (1 / 1000*Hauteur + 1.6f) ) * (1 + 0.55f * Hauteur*Hauteur / ((Hauteur+Largeur)*(Hauteur+Largeur)))
 }
 
