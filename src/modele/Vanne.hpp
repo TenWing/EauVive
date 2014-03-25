@@ -8,7 +8,7 @@
 #ifndef VANNE_HPP_
 #define VANNE_HPP_
 
-#include "TypeVanne.hpp";
+#include "TypeVanne.hpp"
 
 /**
  * Une vanne peut s'affaler et s'ouvrir pour laisser couler un débit d'eau
@@ -33,12 +33,12 @@ class Vanne
 		/**
 		* Accesseur à la hauteur atteinte par la vanne
 		*/
-		public double gethauteur();
+		double getHauteur();
 
 		/**
 		* Demande à la vanne de s'ouvrir jusqu'à ce que la lame d'eau soit atteinte
 		*/
-		public void ouvrir(double lameEau);
+		void ouvrir(double lameEau);
 };
 
 #endif /* VANNE_HPP_ */

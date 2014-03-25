@@ -13,6 +13,7 @@ class GestionStade;
 /**
  * Représente la marée et les informations extraites de celle-ci à l'aide
  * des capteurs
+ * 0 NGF = 5m !!!!!
  */
 class GestionMaree
 {

@@ -53,6 +53,11 @@ class GestionStade
 	public:
 
 		/**
+		* le niveau 0 par rapport au stade
+		*/
+		int NGF;
+
+		/**
 		* Constructeur par défaut
 		*/
 		GestionStade();
@@ -82,6 +87,11 @@ class GestionStade
 		* calcule la lame d'eau //la lame d'eau est la différence entre le niveau de la résèrve et la hauteur qu'atteint la vanne
 		*/
 		double calculerLameEau();
+
+		/**
+		* déduit Q de H
+		*/
+		double deduitQdeH(double H);
 };
 
 #endif /* GESTIONSTADE_HPP_ */

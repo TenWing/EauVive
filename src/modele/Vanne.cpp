@@ -22,3 +22,7 @@ double Vanne::getHauteur()
 	return hauteur;
 }
 
+void Vanne::ouvrir(double lameEau)
+{
+	
+}

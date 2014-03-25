@@ -6,10 +6,12 @@
  */
 
 #include "GestionStade.hpp"
+#include <tgmath.h>
+#include <cmath>
+#include <iostream>
 
-GestionStade::GestionStade()
+GestionStade::GestionStade() : NGF(5)
 {
-	// TODO Auto-generated constructor stub
 
 }
 
@@ -17,12 +19,12 @@ bool GestionStade::verifierFinSeance()
 {
 	double niveauMaree = maree.lireNiveauMaree();
 
-	//si le niveau de la mer est au dessus d'une valeur limite alors on arrête la séance
-	if(niveauMaree > 5)
+	//si le niveau de la mer est au dessus du 0NGF+ ici 5m alors on arrête la séance
+	if(niveauMaree > NGF)
 		return true;
 
 	//Si le niveau de la résèrve est épuisé alors on arrête la séance
-	if(reserve <= 0)
+	if(reserve <= NGF)
 		return true;
 
 	return false;
@@ -33,6 +35,7 @@ void GestionStade::effectuerSeance()
 	//On récupère le débit necessaire pour calculer la lame d'eau
 	double debit = seance.getDebit();
 
+	//On calcule la lame d'eau = la hauteur dont la vanne doit se baisser pour laisser couleur un débit constant
 	double lame = calculerLameEau();
 
 	omniflots.ouvrir(lame);	
@@ -47,14 +50,24 @@ void GestionStade::commencerSeance()
 	}
 }
 
-//Formule : H² = Q / ( g . sqrt(2) . L . g . m)
+//Formule : H² = Q / ( g . sqrt(2) . L . g . m) et L = 7 pour omniflots
 double GestionStade::calculerLameEau()
 {
+	//En somme voilà ce qu'est la lame d'eau
 	return reserve - omniflots.getHauteur();
 }
 
-double calculeM(double Hauteur, double Largeur)
+double GestionStade::calculeM(double Hauteur, double Largeur)
 {
-	return 0.525f * (1 + (1 / 1000*Hauteur + 1.6f) ) * (1 + 0.55f * Hauteur*Hauteur / ((Hauteur+Largeur)*(Hauteur+Largeur)))
+	return 0.525f * (1 + 1 / ((1000*Hauteur) + 1.6f) ) * (1 + 0.55f * (pow(Hauteur,2) / pow(Hauteur+Largeur,2)));
+}
+
+double GestionStade::deduitQdeH(double H)
+{
+	double m = calculeM(H, 7);
+
+	double q =  (m * pow(H,2) * sqrt(2) * 9.81f * 7);
+
+	return q;
 }
 
