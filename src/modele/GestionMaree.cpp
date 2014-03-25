@@ -12,11 +12,6 @@ GestionMaree::GestionMaree() : coefficient(60), niveau(0)
 
 }
 
-GestionMaree::~GestionMaree()
-{
-	
-}
-
 double GestionMaree::lireNiveauMaree()
 {
     //heure = (heure + 1) % 12;

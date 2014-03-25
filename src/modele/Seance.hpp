@@ -16,34 +16,29 @@
  */
 class Seance
 {
-	private:
+    private:
 
-		/**
-		 * le niveau (de difficulté) associé à la séance
-		 */
-		TypeProgramme programme;
+        /**
+         * le niveau (de difficulté) associé à la séance
+         */
+        TypeProgramme programme;
 
-	public:
+    public:
 
-		/**
-		 * Constructeur d'une séance (initialise le niveau a entraînement)
-		 */
-		Seance();
+        /**
+         * Constructeur d'une séance avec le niveau d'entraînement
+         */
+        Seance(TypeProgramme niveau = TypeProgramme::Entrainement);
 
-		/**
-		 * Constructeur d'une séance avec le niveau d'entraînement
-		 */
-		Seance(TypeProgramme niveau);
+        /**
+        * calcule le débit d'eau de la rivière en fonction du programme
+        */
+        double getDebit();
 
-		/**
-		* calcule le débit d'eau de la rivière en fonction du programme
-		*/
-		double getDebit();
-
-		/**
-		* accesseur au type de programme de la séance
-		*/
-		TypeProgramme getProgramme();
+        /**
+        * accesseur au type de programme de la séance
+        */
+        TypeProgramme getProgramme();
 };
 
 #endif /* SEANCE_HPP_ */

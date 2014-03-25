@@ -8,7 +8,9 @@ int main(void)
     
     std::cout << "Hello World!" << std::endl;
     
-    std::cout << "Marée de 95" << std::endl;
+    g.coefficient = 60;
+    
+    std::cout << "Marée de " << g.coefficient << std::endl;
     
     for(int i = 0; i < 24; i++)
         std::cout << i << "h niveau : " << g.lireNiveauMaree() << std::endl;
@@ -19,8 +21,8 @@ int main(void)
 
     while(lame < 0.55f)
     {
-    	std::cout << "debit pour lame de " << lame << " : " << s.deduitQdeH(lame) << std::endl;
-    	lame = lame + 0.02;
+        std::cout << "debit pour lame de " << lame << " : " << s.deduitQdeH(lame) << std::endl;
+        lame = lame + 0.02;
     }
 
     return 0;

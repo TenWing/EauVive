@@ -13,10 +13,10 @@
  */
 enum class TypeProgramme
 {
-	ENTRAINEMENT,
-	INTERMEDIAIRE
-	CONFIRME,
-	COMPETITION
+    Entrainement,
+    Intermediaire,
+    Confirme,
+    Competition
 };
 
 #endif /* TYPEPROGRAMME_HPP_ */

@@ -15,30 +15,29 @@
  */
 class Vanne
 {
-	private:
-		/**
-		* la hauteur qu'atteint la vanne
-		*/
-		double hauteur;
+    private:
+        /**
+        * la hauteur qu'atteint la vanne
+        */
+        double hauteur;
 
-		/**
-		* le type de la vanne
-		*/
-		TypeVanne type;
+        /**
+        * le type de la vanne
+        */
+        TypeVanne type;
 
-	public:
-		Vanne();
-		virtual ~Vanne();
+    public:
+        Vanne();
 
-		/**
-		* Accesseur à la hauteur atteinte par la vanne
-		*/
-		double getHauteur();
+        /**
+        * Accesseur à la hauteur atteinte par la vanne
+        */
+        double getHauteur();
 
-		/**
-		* Demande à la vanne de s'ouvrir jusqu'à ce que la lame d'eau soit atteinte
-		*/
-		void ouvrir(double lameEau);
+        /**
+        * Demande à la vanne de s'ouvrir jusqu'à ce que la lame d'eau soit atteinte
+        */
+        void ouvrir(double lameEau);
 };
 
 #endif /* VANNE_HPP_ */
