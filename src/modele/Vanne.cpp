@@ -8,7 +8,12 @@
 #include "Vanne.hpp"
 #include "TypeVanne.hpp"
 
-Vanne::Vanne() : hauteur(0), type(TypeVanne::OMNIFLOTS), fermee(true), affalee(false)
+Vanne::Vanne() : hauteur(0), type(TypeVanne::OMNIFLOTS), fermee(false), affalee(true)
+{
+
+}
+
+Vanne::Vanne(TypeVanne type, bool fermee) : hauteur(0), type(type), fermee(fermee), affalee(!fermee)
 {
 
 }
@@ -42,4 +47,9 @@ bool Vanne::estAffalee()
 bool Vanne::estFermee()
 {
 	return fermee;
+}
+
+void Vanne::affaler()
+{
+	//RIEN
 }

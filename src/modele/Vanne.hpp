@@ -37,7 +37,16 @@ class Vanne
         bool affalee;
 
     public:
+
+        /**
+        * Constructeur par défaut
+        */
         Vanne();
+
+        /**
+        * Constructeur paramêtré
+        */
+        Vanne(TypeVanne type, bool fermee);
 
         /**
         * Accesseur à la hauteur atteinte par la vanne
@@ -48,6 +57,11 @@ class Vanne
         * Demande à la vanne de s'ouvrir jusqu'à ce que la lame d'eau soit atteinte
         */
         void ouvrir(double lameEau);
+
+        /**
+        * affale cette vanne !
+        */
+        void affaler();
 
         /**
         * change le statut affalee de la vanne
