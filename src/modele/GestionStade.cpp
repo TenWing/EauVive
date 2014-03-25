@@ -6,13 +6,14 @@
  */
 
 #include "GestionStade.hpp"
+#include "Calendrier.hpp"
 #include <tgmath.h>
 #include <cmath>
 #include <iostream>
 
 GestionStade::GestionStade() : ngf(5)
 {
-
+    Calendrier::heure = 11;
 }
 
 

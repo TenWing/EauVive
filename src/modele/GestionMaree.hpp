@@ -20,15 +20,17 @@ class GestionMaree
 	private:
 
 		/**
-		 * le niveau de la mer calculé par les capteurs du système
-		 */
-		double niveau;
-
-		/**
 		* le stade eau vive
 		*/
 		GestionStade* stade;
 
+
+		/**
+		 * le niveau de la mer calculé par les capteurs du système
+		 */
+		double niveau;
+
+		
 	public:
 
 		/**
@@ -40,11 +42,6 @@ class GestionMaree
 		 * Constructeur par défaut
 		 */
 		GestionMaree();
-
-		/**
-		 * Destructeur de l'objet
-		 */
-		virtual ~GestionMaree();
 
 		/**
 		 * accesseur au niveau de la mer, calcule son niveau à l'aide des capteurs et du coefficient

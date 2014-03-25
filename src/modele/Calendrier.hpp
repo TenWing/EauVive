@@ -15,7 +15,7 @@ class Calendrier
 		/**
 		* l'heure considérée par le système
 		*/
-		static int heure;
+		static int heure = 0;
 };
 
 #endif /* CALENDRIER_HPP_ */
