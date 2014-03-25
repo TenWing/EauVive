@@ -41,7 +41,7 @@ class GestionStade
         GestionMaree maree;
 
         /**
-        * le niveau de la réserve
+        * le niveau de la résèrve
         */
         double reserve;
 
@@ -87,6 +87,11 @@ class GestionStade
         * calcule la lame d'eau //la lame d'eau est la différence entre le niveau de la réserve et la hauteur qu'atteint la vanne
         */
         double calculerLameEau();
+
+        /**
+        * travail effectué par l'application en mode automatique
+        */
+        void automatique();
 
         /**
         * déduit Q de H

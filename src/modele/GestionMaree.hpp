@@ -16,24 +16,7 @@ class GestionStade;
  * 0 NGF = 5m !!!!!
  */
 class GestionMaree
-{
-    private:
-
-        /**
-         * le niveau de la mer calculé par les capteurs du système
-         */
-        double niveau;
-
-        /**
-        * le stade eau vive
-        */
-        GestionStade* stade;
-
-        /**
-        * l'heure lue
-        */
-        int heure;
-
+{   
     public:
 
         /**
@@ -50,6 +33,34 @@ class GestionMaree
          * accesseur au niveau de la mer, calcule son niveau à l'aide des capteurs et du coefficient
          */
         double lireNiveauMaree();
+
+        /**
+        * Indique si la marée monte, sinon c'est qu'elle descend
+        */
+        bool estMontante();
+
+        /**
+        * Change la valeur du booléen indiquant si la marée monte
+        */
+        void changeMontante(bool montante);
+
+    private:
+
+        /**
+        * le stade eau vive
+        */
+        GestionStade* stade;
+
+
+        /**
+         * le niveau de la mer calculé par les capteurs du système
+         */
+        double niveau;
+
+        /**
+        * indique si la marée est montante
+        */
+        bool montante;
 };
 
 #endif /* GESTIONMAREE_HPP_ */

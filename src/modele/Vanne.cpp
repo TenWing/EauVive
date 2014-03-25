@@ -19,5 +19,6 @@ double Vanne::getHauteur()
 
 void Vanne::ouvrir(double lameEau)
 {
-    //TODO
+	//On change la hauteur de la vanne
+	hauteur -= lameEau;
 }

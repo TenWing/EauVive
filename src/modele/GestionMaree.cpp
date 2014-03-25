@@ -6,17 +6,24 @@
  */
 #include <cmath>
 #include "GestionMaree.hpp"
+#include "Calendrier.hpp"
 
-GestionMaree::GestionMaree()
+GestionMaree::GestionMaree() : coefficient(60), niveau(0), montante(false)
 {
-    coefficient = 60;
-    heure = 11;
+
 }
 
 double GestionMaree::lireNiveauMaree()
 {
-    heure = (heure + 1) % 12;
-    
-    return (std::abs(6-heure) / 6 - 0.5) * (coefficient / 10.0) + 5.0;
+    return (std::abs(6-Calendrier::heure) / 6 - 0.5) * (coefficient / 10.0) + 5.0;
 }
 
+bool GestionMaree::estMontante()
+{
+    return montante;
+}
+
+void GestionMaree::changeMontante(bool montante)
+{
+    this->montante = montante;
+}

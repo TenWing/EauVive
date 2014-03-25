@@ -6,12 +6,21 @@
  */
 
 #include "GestionStade.hpp"
+#include "Calendrier.hpp"
 #include <tgmath.h>
 #include <cmath>
 #include <iostream>
 
 GestionStade::GestionStade() : ngf(5)
 {
+    Calendrier::heure = 11;
+}
+
+
+void GestionStade::automatique()
+{
+    //On regarde le niveau de la mer
+    double niveau = maree.lireNiveauMaree();
 
 }
 
@@ -19,9 +28,9 @@ bool GestionStade::verifierFinSeance()
 {
     double niveauMaree = maree.lireNiveauMaree();
 
-    //si le niveau de la mer est au dessus du 0NGF+ ici 5m alors on arrête la séance
-    if(niveauMaree > ngf)
-        return true;
+	//si le niveau de la mer est au dessus du 0NGF+ ici 5m alors on arrête la séance
+	if(niveauMaree >= ngf)
+		return true;
 
     //Si le niveau de la réserve est épuisé alors on arrête la séance
     if(reserve <= ngf)
@@ -32,23 +41,24 @@ bool GestionStade::verifierFinSeance()
 
 void GestionStade::effectuerSeance()
 {
-    //On récupère le débit necessaire pour calculer la lame d'eau
-    //double debit = seance.getDebit();
+	//On calcule la lame d'eau = la hauteur dont la vanne doit se baisser pour laisser couleur un débit constant
+	double lame = calculerLameEau();
 
-    //On calcule la lame d'eau = la hauteur dont la vanne doit se baisser pour laisser couleur un débit constant
-    double lame = calculerLameEau();
+	//on indique à la vanne de s'ouvrir pour créer la lame d'eau
+	omniflots.ouvrir(lame);	
 
-    //on indique à la vanne de s'ouvrir pour créer la lame d'eau
-    omniflots.ouvrir(lame); 
+	//On change le niveau de la reserve
+	reserve -= lame;
 }
 
 void GestionStade::commencerSeance()
 {
-    //tant que la séance n'est pas terminée
-    while(!verifierFinSeance())
-    {
-        effectuerSeance();
-    }
+	//tant que la séance n'est pas terminée
+	while(!verifierFinSeance())
+	{
+		//On effectue la séance
+		effectuerSeance();
+	}
 }
 
 //Formule : H² = Q / ( g . sqrt(2) . L . g . m) et L = 7 pour omniflots
