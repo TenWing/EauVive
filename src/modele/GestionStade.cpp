@@ -20,7 +20,40 @@ GestionStade::GestionStade() : ngf(5)
 void GestionStade::automatique()
 {
     //On regarde le niveau de la mer
+    double niveauDepart = maree.lireNiveauMaree();
+
+    //On est obligé d'avancer dans le temps pour savoir si la marée monte ou descend
+    Calendrier::avancerTemps();
+
+    //On relit le niveau de la marée
     double niveau = maree.lireNiveauMaree();
+
+    //En fonction des variations on indique si la marée monte ou descend
+    if(niveauDepart > niveau)
+        maree.changeMontante(false);
+    else
+        maree.changeMontante(true);
+
+    //Si la marée monte et que la marée peut remplir la reserve
+    if(maree.estMontante() && niveau >= ngf)
+    {
+        //On demande a la vanne de se fermer progressivement en suivant le niveau de la mer
+        //TODO
+    }   
+    //Si la marée monte et que le niveau de la mer est bas
+    else if(maree.estMontante() && niveau <= ngf)
+    {
+        //On ne fait rien on attend que la marée puisse remplir le stade
+    }
+    //Si la marée descend et qu'elle est au dessus du niveau de la reserve
+    else if(!maree.estMontante() && niveau >= ngf)
+    {
+        //Si la vanne omniflots est fermée
+        if(omniflots.estFermee())
+        {
+            
+        }
+    }
 
 }
 

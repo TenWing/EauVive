@@ -26,6 +26,16 @@ class Vanne
         */
         TypeVanne type;
 
+        /**
+        * indique si la vanne est fermee
+        */
+        bool fermee;
+
+        /**
+        * indique si la vanne est affalée
+        */
+        bool affalee;
+
     public:
         Vanne();
 
@@ -38,6 +48,26 @@ class Vanne
         * Demande à la vanne de s'ouvrir jusqu'à ce que la lame d'eau soit atteinte
         */
         void ouvrir(double lameEau);
+
+        /**
+        * change le statut affalee de la vanne
+        */
+        void changeAffalee(bool affalee);
+
+        /**
+        * change le statut fermee de la vanne
+        */
+        void changeFermee(bool fermee);
+
+        /**
+        * indique si la vanne est fermee
+        */
+        bool estFermee();
+
+        /**
+        * indique si la vanne est affalée
+        */
+        bool estAffalee();
 };
 
 #endif /* VANNE_HPP_ */

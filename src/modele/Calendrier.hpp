@@ -16,6 +16,11 @@ class Calendrier
 		* l'heure considérée par le système
 		*/
 		static int heure;
+
+		/**
+		* avance d'une heure dans le temps
+		*/
+		static void avancerTemps();
 };
 
 #endif /* CALENDRIER_HPP_ */
