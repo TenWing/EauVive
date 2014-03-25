@@ -10,7 +10,7 @@
 #include <cmath>
 #include <iostream>
 
-GestionStade::GestionStade() : NGF(5)
+GestionStade::GestionStade() : ngf(5)
 {
 
 }
@@ -26,11 +26,11 @@ bool GestionStade::verifierFinSeance()
     double niveauMaree = maree.lireNiveauMaree();
 
 	//si le niveau de la mer est au dessus du 0NGF+ ici 5m alors on arrête la séance
-	if(niveauMaree >= NGF)
+	if(niveauMaree >= ngf)
 		return true;
 
     //Si le niveau de la résèrve est épuisé alors on arrête la séance
-    if(reserve <= NGF)
+    if(reserve <= ngf)
         return true;
 
     return false;

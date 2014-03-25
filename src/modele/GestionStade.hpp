@@ -55,7 +55,7 @@ class GestionStade
 		/**
 		* le niveau 0 par rapport au stade
 		*/
-		int NGF;
+		int ngf;
 
 		/**
 		* Constructeur par défaut
