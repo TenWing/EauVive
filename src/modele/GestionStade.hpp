@@ -94,6 +94,16 @@ class GestionStade
         void automatique();
 
         /**
+        * change la seance courante
+        */
+        void changeSeance(Seance seance);
+
+        /**
+        * change la marée à faire qu'une fois SVP 
+        */
+        void changeMaree(GestionMaree maree);
+
+        /**
         * déduit Q de H
         */
         double deduitQdeH(double H);

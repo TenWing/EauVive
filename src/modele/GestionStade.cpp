@@ -6,14 +6,18 @@
  */
 
 #include "GestionStade.hpp"
+#include "GestionMaree.hpp"
 #include "Calendrier.hpp"
 #include <tgmath.h>
 #include <cmath>
 #include <iostream>
 
-GestionStade::GestionStade() : omniflots(TypeVanne::OMNIFLOTS, false), ngf(5)
+//par défaut on indique que la vanne omniflots est affalée et que la vanne stockVide est fermée
+//rien dans la reserve
+GestionStade::GestionStade() : omniflots(TypeVanne::OMNIFLOTS, false), stockVide(TypeVanne::STOCKVIDE, true), maree(), reserve(0), ngf(5)
 {
-    Calendrier::heure = 0;
+    //On suppose qu'on démarre à minuit
+    Calendrier::heure = 0; 
 }
 
 
@@ -162,6 +166,16 @@ double GestionStade::calculerLameEau()
         default:
             return 1.0d;
     }
+}
+
+void GestionStade::changeSeance(Seance seance)
+{
+    this->seance = seance;
+}
+
+void GestionStade::changeMaree(GestionMaree maree)
+{
+    this->maree = maree;
 }
 
 double GestionStade::calculeM(double Hauteur, double Largeur)
