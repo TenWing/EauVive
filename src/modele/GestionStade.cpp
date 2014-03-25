@@ -23,7 +23,7 @@ bool GestionStade::verifierFinSeance()
     if(niveauMaree > ngf)
         return true;
 
-    //Si le niveau de la résèrve est épuisé alors on arrête la séance
+    //Si le niveau de la réserve est épuisé alors on arrête la séance
     if(reserve <= ngf)
         return true;
 

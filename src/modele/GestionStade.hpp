@@ -41,7 +41,7 @@ class GestionStade
         GestionMaree maree;
 
         /**
-        * le niveau de la résèrve
+        * le niveau de la réserve
         */
         double reserve;
 
@@ -84,7 +84,7 @@ class GestionStade
         bool verifierFinSeance();
 
         /**
-        * calcule la lame d'eau //la lame d'eau est la différence entre le niveau de la résèrve et la hauteur qu'atteint la vanne
+        * calcule la lame d'eau //la lame d'eau est la différence entre le niveau de la réserve et la hauteur qu'atteint la vanne
         */
         double calculerLameEau();
 

@@ -37,7 +37,7 @@ class GestionMaree
     public:
 
         /**
-        * le coefficient de maréé
+        * le coefficient de marée
         */
         int coefficient;
 
