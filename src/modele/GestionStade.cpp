@@ -19,7 +19,9 @@ GestionStade::GestionStade() : ngf(5)
 
 void GestionStade::automatique()
 {
-	
+    //On regarde le niveau de la mer
+    double niveau = maree.lireNiveauMaree();
+
 }
 
 bool GestionStade::verifierFinSeance()

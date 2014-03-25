@@ -34,6 +34,16 @@ class GestionMaree
 		 */
 		double lireNiveauMaree();
 
+		/**
+		* Indique si la marée monte, sinon c'est qu'elle descend
+		*/
+		bool estMontante();
+
+		/**
+		* Change la valeur du booléen indiquant si la marée monte
+		*/
+		void changeMontante(bool montante);
+
 	private:
 
 		/**
@@ -46,6 +56,11 @@ class GestionMaree
 		 * le niveau de la mer calculé par les capteurs du système
 		 */
 		double niveau;
+
+		/**
+		* indique si la marée est montante
+		*/
+		bool montante;
 };
 
 #endif /* GESTIONMAREE_HPP_ */
