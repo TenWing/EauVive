@@ -29,11 +29,6 @@ class GestionMaree
 		*/
 		GestionStade* stade;
 
-		/**
-		* l'heure lue
-		*/
-		int heure;
-
 	public:
 
 		/**

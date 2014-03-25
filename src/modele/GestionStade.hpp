@@ -89,6 +89,11 @@ class GestionStade
 		double calculerLameEau();
 
 		/**
+		* travail effectué par l'application en mode automatique
+		*/
+		void automatique();
+
+		/**
 		* déduit Q de H
 		*/
 		double deduitQdeH(double H);

@@ -15,12 +15,18 @@ GestionStade::GestionStade() : NGF(5)
 
 }
 
+
+void GestionStade::automatique()
+{
+	
+}
+
 bool GestionStade::verifierFinSeance()
 {
 	double niveauMaree = maree.lireNiveauMaree();
 
 	//si le niveau de la mer est au dessus du 0NGF+ ici 5m alors on arrête la séance
-	if(niveauMaree > NGF)
+	if(niveauMaree >= NGF)
 		return true;
 
 	//Si le niveau de la résèrve est épuisé alors on arrête la séance
@@ -32,14 +38,14 @@ bool GestionStade::verifierFinSeance()
 
 void GestionStade::effectuerSeance()
 {
-	//On récupère le débit necessaire pour calculer la lame d'eau
-	double debit = seance.getDebit();
-
 	//On calcule la lame d'eau = la hauteur dont la vanne doit se baisser pour laisser couleur un débit constant
 	double lame = calculerLameEau();
 
 	//on indique à la vanne de s'ouvrir pour créer la lame d'eau
 	omniflots.ouvrir(lame);	
+
+	//On change le niveau de la reserve
+	reserve -= lame;
 }
 
 void GestionStade::commencerSeance()
@@ -47,6 +53,7 @@ void GestionStade::commencerSeance()
 	//tant que la séance n'est pas terminée
 	while(!verifierFinSeance())
 	{
+		//On effectue la séance
 		effectuerSeance();
 	}
 }

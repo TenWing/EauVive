@@ -7,10 +7,9 @@
 #include <cmath>
 #include "GestionMaree.hpp"
 
-GestionMaree::GestionMaree()
+GestionMaree::GestionMaree() : coefficient(60), niveau(0)
 {
-    coefficient = 60;
-    heure = 11;
+
 }
 
 GestionMaree::~GestionMaree()
@@ -20,7 +19,7 @@ GestionMaree::~GestionMaree()
 
 double GestionMaree::lireNiveauMaree()
 {
-    heure = (heure + 1) % 12;
+    //heure = (heure + 1) % 12;
     
     return (std::abs(6-heure) / 6 - 0.5) * (coefficient / 10.0) + 5.0;
 }
