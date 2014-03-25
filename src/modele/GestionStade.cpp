@@ -38,6 +38,7 @@ void GestionStade::effectuerSeance()
 	//On calcule la lame d'eau = la hauteur dont la vanne doit se baisser pour laisser couleur un débit constant
 	double lame = calculerLameEau();
 
+	//on indique à la vanne de s'ouvrir pour créer la lame d'eau
 	omniflots.ouvrir(lame);	
 }
 
@@ -53,8 +54,23 @@ void GestionStade::commencerSeance()
 //Formule : H² = Q / ( g . sqrt(2) . L . g . m) et L = 7 pour omniflots
 double GestionStade::calculerLameEau()
 {
-	//En somme voilà ce qu'est la lame d'eau
-	return reserve - omniflots.getHauteur();
+	switch(seance.getProgramme())
+	{
+		case ENTRAINEMENT :
+			return 0.3f;
+
+		case INTERMEDIAIRE :
+			return 0.38f;
+
+		case CONFIRME :
+			return 0.45f;
+
+		case COMPETITION :
+			return 0.52f;
+
+		default:
+			return 1;
+	}
 }
 
 double GestionStade::calculeM(double Hauteur, double Largeur)

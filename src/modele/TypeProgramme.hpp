@@ -14,6 +14,7 @@
 enum class TypeProgramme
 {
 	ENTRAINEMENT,
+	INTERMEDIAIRE
 	CONFIRME,
 	COMPETITION
 };

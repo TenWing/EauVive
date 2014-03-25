@@ -24,5 +24,5 @@ double Vanne::getHauteur()
 
 void Vanne::ouvrir(double lameEau)
 {
-	
+	//TODO
 }

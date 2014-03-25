@@ -39,6 +39,11 @@ class Seance
 		* calcule le débit d'eau de la rivière en fonction du programme
 		*/
 		double getDebit();
+
+		/**
+		* accesseur au type de programme de la séance
+		*/
+		TypeProgramme getProgramme();
 };
 
 #endif /* SEANCE_HPP_ */

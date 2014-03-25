@@ -23,8 +23,25 @@ double Seance::getDebit()
 {
 	switch(programme)
 	{
+		case ENTRAINEMENT :
+			return 4.6f;
+
+		case INTERMEDIAIRE :
+			return 7.39f;
+
+		case CONFIRME :
+			return 10.36f;
+
+		case COMPETITION :
+			return 13.84f;
+
 		default:
 			return 1;
 	}
+}
+
+TypeProgramme Seance::getProgramme()
+{
+	return programme;
 }
 
