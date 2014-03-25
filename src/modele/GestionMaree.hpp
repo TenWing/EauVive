@@ -16,21 +16,7 @@ class GestionStade;
  * 0 NGF = 5m !!!!!
  */
 class GestionMaree
-{
-	private:
-
-		/**
-		* le stade eau vive
-		*/
-		GestionStade* stade;
-
-
-		/**
-		 * le niveau de la mer calculé par les capteurs du système
-		 */
-		double niveau;
-
-		
+{	
 	public:
 
 		/**
@@ -47,6 +33,19 @@ class GestionMaree
 		 * accesseur au niveau de la mer, calcule son niveau à l'aide des capteurs et du coefficient
 		 */
 		double lireNiveauMaree();
+
+	private:
+
+		/**
+		* le stade eau vive
+		*/
+		GestionStade* stade;
+
+
+		/**
+		 * le niveau de la mer calculé par les capteurs du système
+		 */
+		double niveau;
 };
 
 #endif /* GESTIONMAREE_HPP_ */
