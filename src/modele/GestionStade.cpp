@@ -11,13 +11,17 @@
 #include <tgmath.h>
 #include <cmath>
 #include <iostream>
+#include <string>
+#include <sstream>
 
 //par défaut on indique que la vanne omniflots est affalée et que la vanne stockVide est fermée
-//rien dans la reserve
-GestionStade::GestionStade() : omniflots(TypeVanne::OMNIFLOTS, false), stockVide(TypeVanne::STOCKVIDE, true), maree(), reserve(0), ngf(5)
+//rien dans la reserve, séance d'entraînement
+GestionStade::GestionStade() : omniflots(TypeVanne::OMNIFLOTS, false), stockVide(TypeVanne::STOCKVIDE, true),
+    seance(), maree(), reserve(0), ngf(5)
 {
     //On suppose qu'on démarre à minuit
-    Calendrier::heure = 0; 
+    Calendrier::heure = 0;
+    reserve = ngf;
 }
 
 
@@ -39,20 +43,46 @@ void GestionStade::automatique()
         maree.changeMontante(true);
 
     //Si la marée monte et que la marée peut remplir la reserve
-    if(maree.estMontante() && niveau >= ngf)
+    if(maree.estMontante() && niveau > ngf)
     {
         //Si la vanne est fermee
         if(omniflots.estFermee())
-        {   
+        {  
             //Alors tant pis on est con on attend que l'eau descende puis remonte en faisant attention a remplir 
             //la reserve pour pouvoir faire une scéance
-            //TODO
+
+            //On oublie pas d'affaler la vanne
+            omniflots.affaler();
+
+            while(niveau > ngf)
+            {
+                //On continue d'attendre
+                Calendrier::avancerTemps();
+                niveau = maree.lireNiveauMaree();
+            }
+
+            //arrivé ici on peut dire que la marée descend
+            maree.changeMontante(false);
+            reserve = ngf;
+
+            //On continue d'attendre
+            while(niveau <= ngf)
+            {
+                //On continue d'attendre
+                Calendrier::avancerTemps();
+                niveau = maree.lireNiveauMaree();
+            }
+
+            maree.changeMontante(true);
+            //Arrivé ici on voit que la marée monte et peut remplir le stade jusqu'a la séance !
+            remplirReserve();
+
         }
         //Sinon c'est cool !
         else
         {
             //On demande a la vanne omniflots de se fermer progressivement pour retenir l'eau
-            //TODO
+            remplirReserve();
         }
     }   
     //Si la marée monte et que le niveau de la mer est bas
@@ -166,6 +196,56 @@ double GestionStade::calculerLameEau()
         default:
             return 1.0d;
     }
+}
+
+void GestionStade::remplirReserve()
+{
+    double niveauDepart = maree.lireNiveauMaree();
+    double niveau = maree.lireNiveauMaree();
+
+    while(niveau > ngf && maree.estMontante())
+    {
+        niveauDepart = maree.lireNiveauMaree();
+        //On avance dans le temps
+        Calendrier::avancerTemps();
+
+        //On réactualise le niveau
+        niveau = maree.lireNiveauMaree();
+
+        //Avant de finir la boucle on regarde si la marée monte bien
+        if(niveauDepart < niveau)
+        {            
+            //On demande a la vanne de suivre le niveau
+            omniflots.suivreMaree(niveau);
+
+            //On remplit la reserve
+            reserve = niveau;
+        }
+        else
+            //on dit que la marée descend ce qui stoppe tout
+            maree.changeMontante(false);
+
+        //On oublie pas quand tout est finit de bien fermer la vanne
+        omniflots.changeHauteur(reserve);
+        omniflots.changeFermee(true);
+        omniflots.changeAffalee(false);
+    }
+}
+
+std::string GestionStade::description()
+{
+    std::stringstream str;
+    str << "Niveau de la mer : ";
+    str << maree.lireNiveauMaree();
+    str << "\n";
+    str << "Vanne omniflots fermee ? ";
+    if(omniflots.estFermee())
+        str << "OUI ! ";
+    else
+        str << "non :( ";
+     str << "\n";
+
+    return str.str();
 }
 
 void GestionStade::changeSeance(Seance seance)

@@ -59,6 +59,11 @@ class Vanne
         void ouvrir(double lameEau);
 
         /**
+        * Demande a la vanne de se fermer tout en suivant le niveau de la mer
+        */
+        void suivreMaree(double niveau);
+
+        /**
         * affale cette vanne !
         */
         void affaler();
@@ -72,6 +77,11 @@ class Vanne
         * change le statut fermee de la vanne
         */
         void changeFermee(bool fermee);
+
+        /**
+        * change arbitrairement la hauteur de la vanne
+        */
+        void changeHauteur(double hauteur);
 
         /**
         * indique si la vanne est fermee

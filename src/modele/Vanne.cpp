@@ -39,6 +39,11 @@ void Vanne::changeFermee(bool fermee)
 	this->fermee = fermee;
 }
 
+void Vanne::changeHauteur(double hauteur)
+{
+	this->hauteur = hauteur;
+}
+
 bool Vanne::estAffalee()
 {
 	return affalee;
@@ -52,4 +57,9 @@ bool Vanne::estFermee()
 void Vanne::affaler()
 {
 	//RIEN
+}
+
+void Vanne::suivreMaree(double niveau)
+{
+	hauteur = niveau - 0.03d;
 }

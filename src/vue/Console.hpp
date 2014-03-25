@@ -14,6 +14,11 @@ class Console
 		*/
 		Console();
 
+		/**
+		* lance l'appli
+		*/
+		void lancer();
+
 	private:
 		/**
 		* le stade de l'application

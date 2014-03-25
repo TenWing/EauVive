@@ -11,6 +11,7 @@
 #include "Seance.hpp"
 #include "Vanne.hpp"
 #include "GestionMaree.hpp"
+#include <string>
 
 /**
  * Représente l'objet stade, contenant toutes les structures pouvant
@@ -49,6 +50,11 @@ class GestionStade
         * calcule la variable m nécessaire au calcul de la lame d'eau
         */
         double calculeM(double hauteur, double largeur);
+
+        /**
+        * ordonne a la vanne de monter progressivement en suivant le niveau de l'eau pour bien remplir la reserve
+        */
+        void remplirReserve();
 
     public:
 
@@ -107,6 +113,11 @@ class GestionStade
         * déduit Q de H
         */
         double deduitQdeH(double H);
+
+        /**
+        * decrit l'état dans lequel est le stade
+        */
+        std::string description();
 };
 
 #endif /* GESTIONSTADE_HPP_ */
