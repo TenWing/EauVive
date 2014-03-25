@@ -8,12 +8,6 @@
 #include "Seance.hpp"
 #include "TypeProgramme.hpp"
 
-//Initialise le programme a entrainement
-Seance::Seance() : programme(TypeProgramme::ENTRAINEMENT)
-{
-
-}
-
 Seance::Seance(TypeProgramme niveau) : programme(niveau)
 {
 
@@ -21,27 +15,27 @@ Seance::Seance(TypeProgramme niveau) : programme(niveau)
 
 double Seance::getDebit()
 {
-	switch(programme)
-	{
-		case ENTRAINEMENT :
-			return 4.6f;
+    switch(programme)
+    {
+        case TypeProgramme::Entrainement:
+            return 4.6d;
 
-		case INTERMEDIAIRE :
-			return 7.39f;
+        case TypeProgramme::Intermediaire:
+            return 7.39d;
 
-		case CONFIRME :
-			return 10.36f;
+        case TypeProgramme::Confirme:
+            return 10.36d;
 
-		case COMPETITION :
-			return 13.84f;
+        case TypeProgramme::Competition:
+            return 13.84d;
 
-		default:
-			return 1;
-	}
+        default:
+            return 1.0d;
+    }
 }
 
 TypeProgramme Seance::getProgramme()
 {
-	return programme;
+    return programme;
 }
 

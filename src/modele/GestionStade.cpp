@@ -10,80 +10,80 @@
 #include <cmath>
 #include <iostream>
 
-GestionStade::GestionStade() : NGF(5)
+GestionStade::GestionStade() : ngf(5)
 {
 
 }
 
 bool GestionStade::verifierFinSeance()
 {
-	double niveauMaree = maree.lireNiveauMaree();
+    double niveauMaree = maree.lireNiveauMaree();
 
-	//si le niveau de la mer est au dessus du 0NGF+ ici 5m alors on arrête la séance
-	if(niveauMaree > NGF)
-		return true;
+    //si le niveau de la mer est au dessus du 0NGF+ ici 5m alors on arrête la séance
+    if(niveauMaree > ngf)
+        return true;
 
-	//Si le niveau de la résèrve est épuisé alors on arrête la séance
-	if(reserve <= NGF)
-		return true;
+    //Si le niveau de la résèrve est épuisé alors on arrête la séance
+    if(reserve <= ngf)
+        return true;
 
-	return false;
+    return false;
 }
 
 void GestionStade::effectuerSeance()
 {
-	//On récupère le débit necessaire pour calculer la lame d'eau
-	double debit = seance.getDebit();
+    //On récupère le débit necessaire pour calculer la lame d'eau
+    //double debit = seance.getDebit();
 
-	//On calcule la lame d'eau = la hauteur dont la vanne doit se baisser pour laisser couleur un débit constant
-	double lame = calculerLameEau();
+    //On calcule la lame d'eau = la hauteur dont la vanne doit se baisser pour laisser couleur un débit constant
+    double lame = calculerLameEau();
 
-	//on indique à la vanne de s'ouvrir pour créer la lame d'eau
-	omniflots.ouvrir(lame);	
+    //on indique à la vanne de s'ouvrir pour créer la lame d'eau
+    omniflots.ouvrir(lame); 
 }
 
 void GestionStade::commencerSeance()
 {
-	//tant que la séance n'est pas terminée
-	while(!verifierFinSeance())
-	{
-		effectuerSeance();
-	}
+    //tant que la séance n'est pas terminée
+    while(!verifierFinSeance())
+    {
+        effectuerSeance();
+    }
 }
 
 //Formule : H² = Q / ( g . sqrt(2) . L . g . m) et L = 7 pour omniflots
 double GestionStade::calculerLameEau()
 {
-	switch(seance.getProgramme())
-	{
-		case ENTRAINEMENT :
-			return 0.3f;
+    switch(seance.getProgramme())
+    {
+        case TypeProgramme::Entrainement:
+            return 0.3d;
 
-		case INTERMEDIAIRE :
-			return 0.38f;
+        case TypeProgramme::Intermediaire:
+            return 0.38d;
 
-		case CONFIRME :
-			return 0.45f;
+        case TypeProgramme::Confirme:
+            return 0.45d;
 
-		case COMPETITION :
-			return 0.52f;
+        case TypeProgramme::Competition:
+            return 0.52d;
 
-		default:
-			return 1;
-	}
+        default:
+            return 1.0d;
+    }
 }
 
 double GestionStade::calculeM(double Hauteur, double Largeur)
 {
-	return 0.525f * (1 + 1 / ((1000*Hauteur) + 1.6f) ) * (1 + 0.55f * (pow(Hauteur,2) / pow(Hauteur+Largeur,2)));
+    return 0.525d * (1 + 1 / ((1000*Hauteur) + 1.6d) ) * (1 + 0.55d * (pow(Hauteur,2) / pow(Hauteur+Largeur,2)));
 }
 
 double GestionStade::deduitQdeH(double H)
 {
-	double m = calculeM(H, 7);
+    double m = calculeM(H, 7);
 
-	double q =  (m * pow(H,2) * sqrt(2) * 9.81f * 7);
+    double q =  (m * pow(H,2) * sqrt(2) * 9.81d * 7);
 
-	return q;
+    return q;
 }
 

@@ -13,11 +13,6 @@ GestionMaree::GestionMaree()
     heure = 11;
 }
 
-GestionMaree::~GestionMaree()
-{
-	
-}
-
 double GestionMaree::lireNiveauMaree()
 {
     heure = (heure + 1) % 12;

@@ -17,44 +17,39 @@ class GestionStade;
  */
 class GestionMaree
 {
-	private:
+    private:
 
-		/**
-		 * le niveau de la mer calculé par les capteurs du système
-		 */
-		double niveau;
+        /**
+         * le niveau de la mer calculé par les capteurs du système
+         */
+        double niveau;
 
-		/**
-		* le stade eau vive
-		*/
-		GestionStade* stade;
+        /**
+        * le stade eau vive
+        */
+        GestionStade* stade;
 
-		/**
-		* l'heure lue
-		*/
-		int heure;
+        /**
+        * l'heure lue
+        */
+        int heure;
 
-	public:
+    public:
 
-		/**
-		* le coefficient de maréé
-		*/
-		int coefficient;
+        /**
+        * le coefficient de maréé
+        */
+        int coefficient;
 
-		/**
-		 * Constructeur par défaut
-		 */
-		GestionMaree();
+        /**
+         * Constructeur par défaut
+         */
+        GestionMaree();
 
-		/**
-		 * Destructeur de l'objet
-		 */
-		virtual ~GestionMaree();
-
-		/**
-		 * accesseur au niveau de la mer, calcule son niveau à l'aide des capteurs et du coefficient
-		 */
-		double lireNiveauMaree();
+        /**
+         * accesseur au niveau de la mer, calcule son niveau à l'aide des capteurs et du coefficient
+         */
+        double lireNiveauMaree();
 };
 
 #endif /* GESTIONMAREE_HPP_ */
