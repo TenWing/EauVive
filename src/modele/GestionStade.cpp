@@ -20,7 +20,7 @@ GestionStade::GestionStade() : omniflots(TypeVanne::OMNIFLOTS, false), stockVide
     seance(), maree(), reserve(0), ngf(5)
 {
     //On suppose qu'on démarre à minuit
-    Calendrier::heure = 0;
+    Calendrier::heure = 10;
     reserve = ngf;
 }
 
@@ -237,6 +237,9 @@ std::string GestionStade::description()
     std::stringstream str;
     str << "Niveau de la mer : ";
     str << maree.lireNiveauMaree();
+    str << "\n";
+    str << "Niveau de la réserve";
+    str << reserve;
     str << "\n";
     str << "Vanne omniflots fermee ? ";
     if(omniflots.estFermee())
