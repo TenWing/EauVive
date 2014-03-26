@@ -17,7 +17,7 @@
 //par défaut on indique que la vanne omniflots est affalée et que la vanne stockVide est fermée
 //rien dans la reserve, séance d'entraînement
 GestionStade::GestionStade() : omniflots(TypeVanne::OMNIFLOTS, false), stockVide(TypeVanne::STOCKVIDE, true),
-    seance(), maree(), reserve(0), ngf(5)
+    seance(TypeProgramme::Competition), maree(), reserve(0), ngf(5)
 {
     //On suppose qu'on démarre à 
     Calendrier::heure = 12;
