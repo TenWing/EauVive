@@ -56,7 +56,8 @@ bool Vanne::estFermee()
 
 void Vanne::affaler()
 {
-	//RIEN
+	affalee = true;
+	fermee = false;
 }
 
 void Vanne::suivreMaree(double niveau)
