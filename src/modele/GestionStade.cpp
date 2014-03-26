@@ -19,8 +19,8 @@
 GestionStade::GestionStade() : omniflots(TypeVanne::OMNIFLOTS, false), stockVide(TypeVanne::STOCKVIDE, true),
     seance(), maree(), reserve(0), ngf(5)
 {
-    //On suppose qu'on démarre à minuit
-    Calendrier::heure = 4;
+    //On suppose qu'on démarre à 
+    Calendrier::heure = 12;
     reserve = ngf;
 }
 
@@ -181,6 +181,10 @@ void GestionStade::automatique()
         Calendrier::avancerTemps();
     }
 
+    //On décrit la situation avant de commencer
+
+    std::cout << "Statut au demarrage : " << description() << std::endl;
+
     commencerSeance();
 }
 
@@ -224,7 +228,12 @@ void GestionStade::commencerSeance()
 	{         
 		//On effectue la séance
 		effectuerSeance();
+
+        //On affiche l'état de la séance
+        std::cout << description() << std::endl;
 	}
+
+    //On est arrivé à la fin de la séance
 }
 
 //Formule : H² = Q / ( g . sqrt(2) . L . g . m) et L = 7 pour omniflots
