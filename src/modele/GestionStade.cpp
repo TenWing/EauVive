@@ -233,6 +233,11 @@ void GestionStade::commencerSeance()
         std::cout << description() << std::endl;
 	}
 
+    std::cout << "Interruption de la seance" << std::endl;
+    omniflots.fermer();
+
+    std::cout << description() << std::endl;
+
     //On est arrivé à la fin de la séance
     //On demande l'intervention d'un humain
     intervention = true;   
