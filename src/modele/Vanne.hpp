@@ -92,6 +92,16 @@ class Vanne
         * indique si la vanne est affalée
         */
         bool estAffalee();
+
+        /**
+        * ouvre cette vanne
+        */
+        void ouvre();
+
+        /**
+        * indique si la vanne est ouverte
+        */
+        bool estOuverte();
 };
 
 #endif /* VANNE_HPP_ */

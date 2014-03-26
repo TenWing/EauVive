@@ -64,3 +64,14 @@ void Vanne::suivreMaree(double niveau)
 {
 	hauteur = niveau - 0.03d;
 }
+
+void Vanne::ouvre()
+{
+	affalee =false;
+	fermee =false;
+}
+
+bool Vanne::estOuverte()
+{
+	return (!affalee && !fermee);
+}

@@ -171,7 +171,17 @@ void GestionStade::automatique()
     //Ici on va commencer la séance sachant que :
     //Au debut d'une seance la hauteur de la vanne est la même que la reserve
     //la marée doit descendre et être  <= ngf
+    //Mais pour ça il faut attendre marée basse
 
+    niveau = maree.lireNiveauMaree();
+
+    while(!maree.estMontante() && niveau > ngf)
+    {
+        niveau = maree.lireNiveauMaree();
+        Calendrier::avancerTemps();
+    }
+
+    commencerSeance();
 }
 
 bool GestionStade::verifierFinSeance()
@@ -205,10 +215,13 @@ void GestionStade::effectuerSeance()
 }
 
 void GestionStade::commencerSeance()
-{
+{   
+    //On dit que la vanne s'ouvre
+    omniflots.ouvre();
+
 	//tant que la séance n'est pas terminée
 	while(!verifierFinSeance())
-	{
+	{         
 		//On effectue la séance
 		effectuerSeance();
 	}
