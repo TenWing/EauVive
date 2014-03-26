@@ -31,6 +31,7 @@ class GestionMaree
 
         /**
          * accesseur au niveau de la mer, calcule son niveau à l'aide des capteurs et du coefficient
+         * permet aussi de dire si la marée est montante ou descendante
          */
         double lireNiveauMaree();
 

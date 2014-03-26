@@ -15,14 +15,12 @@ GestionMaree::GestionMaree() : coefficient(60), niveau(0), montante(false)
 
 double GestionMaree::lireNiveauMaree()
 {
-	int heure = Calendrier::heure%12;
-
-    return (std::abs(6-heure) / 6 - 0.5d) * (coefficient / 10.0d) + 5.0d;
+    return (std::abs(6 - (Calendrier::heure%12) ) / 6 - 0.5d) * (coefficient / 10.0d) + 5.0d;
 }
 
 bool GestionMaree::estMontante()
 {
-    return montante;
+    return (Calendrier::heure % 12) > 6;
 }
 
 void GestionMaree::changeMontante(bool montante)

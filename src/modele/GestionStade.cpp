@@ -61,8 +61,6 @@ void GestionStade::automatique()
                 niveau = maree.lireNiveauMaree();
             }
 
-            //arrivé ici on peut dire que la marée descend
-            maree.changeMontante(false);
             reserve = ngf;
 
             //On continue d'attendre
@@ -73,7 +71,6 @@ void GestionStade::automatique()
                 niveau = maree.lireNiveauMaree();
             }
 
-            maree.changeMontante(true);
             //Arrivé ici on voit que la marée monte et peut remplir le stade jusqu'a la séance !
             remplirReserve();
 
@@ -200,36 +197,29 @@ double GestionStade::calculerLameEau()
 
 void GestionStade::remplirReserve()
 {
-    double niveauDepart = maree.lireNiveauMaree();
     double niveau = maree.lireNiveauMaree();
 
     while(niveau > ngf && maree.estMontante())
     {
-        niveauDepart = maree.lireNiveauMaree();
         //On avance dans le temps
         Calendrier::avancerTemps();
 
         //On réactualise le niveau
-        niveau = maree.lireNiveauMaree();
+        niveau = maree.lireNiveauMaree();    
+   
+        //On demande a la vanne de suivre le niveau
+        omniflots.suivreMaree(niveau);
 
-        //Avant de finir la boucle on regarde si la marée monte bien
-        if(niveauDepart < niveau)
-        {            
-            //On demande a la vanne de suivre le niveau
-            omniflots.suivreMaree(niveau);
-
-            //On remplit la reserve
-            reserve = niveau;
-        }
-        else
-            //on dit que la marée descend ce qui stoppe tout
-            maree.changeMontante(false);
-
-        //On oublie pas quand tout est finit de bien fermer la vanne
-        omniflots.changeHauteur(reserve);
-        omniflots.changeFermee(true);
-        omniflots.changeAffalee(false);
+        //On remplit la reserve
+        reserve = niveau;        
     }
+
+    //la marée descend ce qui stoppe tout
+
+    //On oublie pas quand tout est fini de bien fermer la vanne
+    omniflots.changeHauteur(reserve);
+    omniflots.changeFermee(true);
+    omniflots.changeAffalee(false);
 }
 
 std::string GestionStade::description()
