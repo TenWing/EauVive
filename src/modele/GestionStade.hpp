@@ -56,6 +56,11 @@ class GestionStade
         */
         void remplirReserve();
 
+        /**
+        * si activé bloque le traitement et requiert une intervention humaine pour virer les kayakistes
+        */
+        bool intervention;
+
     public:
 
         /**
@@ -72,6 +77,11 @@ class GestionStade
         * commence la séance actuelle
         */
         void commencerSeance();
+
+        /**
+        * traitement effectué après intervention du gestionnaire
+        */
+        void finSeance();
 
         /**
         * Interrompt la seance jouée
@@ -118,6 +128,11 @@ class GestionStade
         * decrit l'état dans lequel est le stade
         */
         std::string description();
+
+        /**
+        * le gestionnaire est intervenu, on repart
+        */
+        bool requiertIntervention();
 };
 
 #endif /* GESTIONSTADE_HPP_ */

@@ -17,7 +17,7 @@
 //par défaut on indique que la vanne omniflots est affalée et que la vanne stockVide est fermée
 //rien dans la reserve, séance d'entraînement
 GestionStade::GestionStade() : omniflots(TypeVanne::OMNIFLOTS, false), stockVide(TypeVanne::STOCKVIDE, true),
-    seance(TypeProgramme::Competition), maree(), reserve(0), ngf(5)
+    seance(TypeProgramme::Competition), maree(), reserve(0), intervention(false), ngf(5)
 {
     //On suppose qu'on démarre à 
     Calendrier::heure = 12;
@@ -234,6 +234,42 @@ void GestionStade::commencerSeance()
 	}
 
     //On est arrivé à la fin de la séance
+    //On demande l'intervention d'un humain
+    intervention = true;   
+}
+
+void GestionStade::finSeance()
+{
+    //On regarde pourquoi on s'est arrêté
+    double niveau = maree.lireNiveauMaree();
+
+    //si c'est parce que la mer a trop remonté
+    if(niveau >= ngf)
+    {
+        //s'il y a encore de l'eau dans la reserve
+        if(reserve > ngf)
+            //On ferme vite la vanne
+            omniflots.fermer();
+        else
+        {
+             //On affale la vanne
+            omniflots.affaler();
+            reserve = ngf;
+        }
+    }
+    //Sinon c'est parce qu'il n'y a plus d'eau dans la reserve
+    else if(reserve <= ngf)
+    {
+        //On affale la vanne
+        omniflots.affaler();
+
+        //On affale aussi la vanne stockVide
+        stockVide.affaler();
+
+        //la reserve se vide
+        reserve = 0;
+    }
+
 }
 
 //Formule : H² = Q / ( g . sqrt(2) . L . g . m) et L = 7 pour omniflots
@@ -294,18 +330,35 @@ std::string GestionStade::description()
     str << "Niveau de la reserve ";
     str << reserve;
     str << "\n";
-    str << "Vanne omniflots fermee ? ";
+    str << "Vanne omniflots ? ";
     if(omniflots.estFermee())
-        str << "OUI ! ";
-    else
-        str << "non :( ";
-     str << "\n";
+        str << "FERMEE ! ";
+    else if(omniflots.estAffalee())
+        str << "AFFALEE ";
+    else if(omniflots.estOuverte())
+        str << "OUVERTE";
+    str << "\n";
+
+    str << "Vanne stockVide ? ";
+    if(stockVide.estFermee())
+        str << "FERMEE ! ";
+    else if(stockVide.estAffalee())
+        str << "AFFALEE ";
+    else if(stockVide.estOuverte())
+        str << "OUVERTE";
+    str << "\n";
+
     str << "Il est actuellement : ";
     str << Calendrier::heure;
     str << "heure(s)";
     str << "\n";
 
     return str.str();
+}
+
+bool GestionStade::requiertIntervention()
+{
+    return intervention;
 }
 
 void GestionStade::changeSeance(Seance seance)

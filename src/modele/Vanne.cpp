@@ -71,6 +71,12 @@ void Vanne::ouvre()
 	fermee =false;
 }
 
+void Vanne::fermer()
+{
+	affalee = false;
+	fermee =true;
+}
+
 bool Vanne::estOuverte()
 {
 	return (!affalee && !fermee);

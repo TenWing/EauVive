@@ -99,6 +99,11 @@ class Vanne
         void ouvre();
 
         /**
+        * ferme la vanne
+        */
+        void fermer();
+
+        /**
         * indique si la vanne est ouverte
         */
         bool estOuverte();
