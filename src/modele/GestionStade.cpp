@@ -30,6 +30,9 @@ void GestionStade::automatique()
     //On regarde le niveau de la mer
     double niveau = maree.lireNiveauMaree();
 
+    std::cout << "Statut au demarrage de l'application " << std::endl;
+    std::cout << description() << std::endl;
+
     //Si la marée monte et que la marée peut remplir la reserve
     if(maree.estMontante() && niveau > ngf)
     {
@@ -183,7 +186,8 @@ void GestionStade::automatique()
 
     //On décrit la situation avant de commencer
 
-    std::cout << "Statut au demarrage : " << description() << std::endl;
+    std::cout << "Statut au debut de la seance : " << std::endl;
+    std::cout << description() << std::endl;
 
     commencerSeance();
 }
@@ -295,7 +299,10 @@ void GestionStade::remplirReserve()
         omniflots.suivreMaree(niveau);
 
         //On remplit la reserve
-        reserve = niveau;        
+        reserve = niveau; 
+
+        std::cout << "remplissage de la reserve" << std::endl;
+        std::cout << description() << std::endl;       
     }
 
     //la marée descend ce qui stoppe tout
@@ -312,8 +319,16 @@ std::string GestionStade::description()
     str << "Niveau de la mer : ";
     str << maree.lireNiveauMaree();
     str << "\n";
+    if(maree.estMontante())
+        str << "La maree monte";
+    else
+        str << "La maree descend";
+    str << "\n";
     str << "Niveau de la reserve ";
-    str << reserve;
+    if(reserve > ngf)
+        str << reserve-ngf;
+    else
+        str << "au niveau du radier";
     str << "\n";
     str << "Vanne omniflots ? ";
     if(omniflots.estFermee())
