@@ -240,35 +240,15 @@ void GestionStade::commencerSeance()
 
 void GestionStade::finSeance()
 {
-    //On regarde pourquoi on s'est arrêté
-    double niveau = maree.lireNiveauMaree();
+    
+    //On affale les vannes
+    omniflots.affaler();
 
-    //si c'est parce que la mer a trop remonté
-    if(niveau >= ngf)
-    {
-        //s'il y a encore de l'eau dans la reserve
-        if(reserve > ngf)
-            //On ferme vite la vanne
-            omniflots.fermer();
-        else
-        {
-             //On affale la vanne
-            omniflots.affaler();
-            reserve = ngf;
-        }
-    }
-    //Sinon c'est parce qu'il n'y a plus d'eau dans la reserve
-    else if(reserve <= ngf)
-    {
-        //On affale la vanne
-        omniflots.affaler();
+    //On affale aussi la vanne stockVide
+    stockVide.affaler();
 
-        //On affale aussi la vanne stockVide
-        stockVide.affaler();
-
-        //la reserve se vide
-        reserve = 0;
-    }
+    //la reserve se vide
+    reserve = maree.lireNiveauMaree();
 
 }
 

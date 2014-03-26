@@ -5,7 +5,7 @@
 
 Console::Console() : stade()
 {
-
+	
 }
 
 void Console::lancer()

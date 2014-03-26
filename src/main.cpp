@@ -6,7 +6,7 @@
 
 int main(void)
 {
-
+    /*
     GestionMaree g;
     
     g.coefficient = 60;
@@ -17,7 +17,7 @@ int main(void)
     {
         std::cout << i << "h niveau : " << g.lireNiveauMaree() << std::endl;
         Calendrier::avancerTemps();
-    }   
+    }   */
 
     Console affichage;
 
