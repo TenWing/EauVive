@@ -59,16 +59,11 @@ void GestionStade::automatique()
                 niveau = maree.lireNiveauMaree();
             }
 
-            //Arrivé ici on voit que la marée monte et peut remplir le stade jusqu'a la séance !
-            remplirReserve();
+        }
 
-        }
-        //Sinon c'est cool !
-        else
-        {             
-            //On demande a la vanne omniflots de se fermer progressivement pour retenir l'eau
-            remplirReserve();
-        }
+        //Arrivé ici on voit que la marée monte et peut remplir le stade jusqu'a la séance !
+        //On demande a la vanne omniflots de se fermer progressivement pour retenir l'eau
+        remplirReserve();
     }   
     //Si la marée monte et que le niveau de la mer est bas
     else if(maree.estMontante() && niveau <= ngf)
@@ -192,9 +187,9 @@ bool GestionStade::verifierFinSeance()
 {
     double niveauMaree = maree.lireNiveauMaree();
 
-	//si le niveau de la mer est au dessus du 0NGF+ ici 5m alors on arrête la séance
-	if(niveauMaree >= ngf)
-		return true;
+    //si le niveau de la mer est au dessus du 0NGF+ ici 5m alors on arrête la séance
+    if(niveauMaree >= ngf)
+        return true;
 
     //Si le niveau de la réserve est épuisé alors on arrête la séance
     if(reserve <= ngf)
@@ -205,14 +200,14 @@ bool GestionStade::verifierFinSeance()
 
 void GestionStade::effectuerSeance()
 {
-	//On calcule la lame d'eau = la hauteur dont la vanne doit se baisser pour laisser couleur un débit constant
-	double lame = calculerLameEau();
+    //On calcule la lame d'eau = la hauteur dont la vanne doit se baisser pour laisser couleur un débit constant
+    double lame = calculerLameEau();
 
-	//on indique à la vanne de s'ouvrir pour créer la lame d'eau
-	omniflots.ouvrir(lame);	
+    //on indique à la vanne de s'ouvrir pour créer la lame d'eau
+    omniflots.ouvrir(lame); 
 
-	//On change le niveau de la reserve
-	reserve -= lame;
+    //On change le niveau de la reserve
+    reserve -= lame;
 
     //On avance dans le temps
     Calendrier::avancerTemps();
@@ -223,15 +218,15 @@ void GestionStade::commencerSeance()
     //On dit que la vanne s'ouvre
     omniflots.ouvre();
 
-	//tant que la séance n'est pas terminée
-	while(!verifierFinSeance())
-	{         
-		//On effectue la séance
-		effectuerSeance();
+    //tant que la séance n'est pas terminée
+    while(!verifierFinSeance())
+    {         
+        //On effectue la séance
+        effectuerSeance();
 
         //On affiche l'état de la séance
         std::cout << description() << std::endl;
-	}
+    }
 
     //On est arrivé à la fin de la séance
     //On demande l'intervention d'un humain
@@ -290,7 +285,7 @@ void GestionStade::remplirReserve()
         omniflots.suivreMaree(niveau);
 
         //On remplit la reserve
-        reserve = niveau;        
+        reserve = niveau;  
     }
 
     //la marée descend ce qui stoppe tout

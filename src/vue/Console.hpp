@@ -8,22 +8,25 @@
 */
 class Console
 {
-	public:
-		/**
-		* Constructeur par défaut
-		*/
-		Console();
+    public:
+        /**
+        * Constructeur par défaut
+        */
+        Console();
 
-		/**
-		* lance l'appli
-		*/
-		void lancer();
+        /**
+        * lance l'appli
+        */
+        void lancer();
+        
+        
+        void demanderInformations();
 
-	private:
-		/**
-		* le stade de l'application
-		*/
-		GestionStade stade;
+    private:
+        /**
+        * le stade de l'application
+        */
+        GestionStade stade;
 };
 
 #endif /* CONSOLE_HPP_ */

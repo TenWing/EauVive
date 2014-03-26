@@ -42,7 +42,7 @@ class GestionStade
         GestionMaree maree;
 
         /**
-        * le niveau de la résèrve
+        * le niveau de la réserve
         */
         double reserve;
 
